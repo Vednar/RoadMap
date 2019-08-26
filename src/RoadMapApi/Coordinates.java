@@ -1,3 +1,5 @@
+package RoadMapApi;
+
 public class Coordinates {
 
     private Double x;
@@ -18,7 +20,7 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "Coordinates{" +
+        return "RoadMapApi.Coordinates{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
