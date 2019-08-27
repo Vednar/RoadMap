@@ -12,8 +12,11 @@ public class RoadMap {
     }
 
     public void addCity(String name, Double x, Double y) throws WrongInputDataException {
-        if (!(cities.putIfAbsent(name, new City(name, new Coordinates(x, y))) instanceof City))
+        if (cities.containsKey(name)) {
             throw new WrongInputDataException("City " + name + " already exist");
+        } else {
+            cities.put(name, new City(name, new Coordinates(x, y)));
+        }
     }
 
     public void addRoad(String name, Double length, String firstCity, String secondCity) throws WrongInputDataException {

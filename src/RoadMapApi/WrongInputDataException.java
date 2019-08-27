@@ -1,8 +1,8 @@
 package RoadMapApi;
 
-class WrongInputDataException extends Exception {
+public class WrongInputDataException extends Exception {
 
-    WrongInputDataException(String message) {
+    public WrongInputDataException(String message) {
         super(message);
     }
 }

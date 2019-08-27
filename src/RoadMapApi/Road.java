@@ -1,5 +1,8 @@
 package RoadMapApi;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Road {
 
     private String name;
@@ -27,11 +30,27 @@ public class Road {
 
     @Override
     public String toString() {
-        return "RoadMapApi.Road{" +
+        return "Road " +
                 "name='" + name + '\'' +
                 ", length=" + length +
                 ", from=" + cities[0] +
-                ", to=" + cities[1] +
-                '}';
+                ", to=" + cities[1];
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Road)) return false;
+        Road road = (Road) o;
+        return getName().equals(road.getName()) &&
+                getLength().equals(road.getLength()) &&
+                Arrays.equals(getCities(), road.getCities());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getName(), getLength());
+        result = 31 * result + Arrays.hashCode(getCities());
+        return result;
     }
 }

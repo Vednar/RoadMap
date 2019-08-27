@@ -1,5 +1,7 @@
 package RoadMapApi;
 
+import java.util.Objects;
+
 public class Coordinates {
 
     private Double x;
@@ -19,10 +21,23 @@ public class Coordinates {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coordinates)) return false;
+        Coordinates that = (Coordinates) o;
+        return getX().equals(that.getX()) &&
+                getY().equals(that.getY());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getX(), getY());
+    }
+
+    @Override
     public String toString() {
-        return "RoadMapApi.Coordinates{" +
+        return "Coordinates: " +
                 "x=" + x +
-                ", y=" + y +
-                '}';
+                ", y=" + y;
     }
 }

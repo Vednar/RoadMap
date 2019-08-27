@@ -2,6 +2,7 @@ package RoadMapApi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class City {
 
@@ -34,5 +35,25 @@ public class City {
         return new ArrayList<Road>(connections.values());
     }
 
-    //TODO: возможно, заимплементить toString
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
+        City city = (City) o;
+        return getName().equals(city.getName()) &&
+                getCoordinates().equals(city.getCoordinates()) &&
+                Objects.equals(getConnections(), city.getConnections());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getCoordinates(), getConnections());
+    }
+
+    @Override
+    public String toString() {
+        return "City " +
+                "name='" + name + '\'' +
+                ", " + coordinates.toString();
+    }
 }
